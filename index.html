@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0911">
+  <meta name="description" content="الموقع الشخصي لـ ZEX.MINO — نبذة، مشاريع، وروابط التواصل.">
+  <title>ZEX.MINO — الموقع الشخصي</title>
+  <style>
+    :root {
+      --bg: #0b0911;
+      --panel: #14111d;
+      --panel-2: #1b1627;
+      --text: #f7f3ff;
+      --muted: #b8aec9;
+      --purple: #b39aff;
+      --purple-2: #8b5cf6;
+      --border: rgba(210, 193, 255, .16);
+      --shadow: 0 18px 55px rgba(0, 0, 0, .28);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; background:
+        radial-gradient(ellipse at 80% 0%, rgba(139,92,246,.17), transparent 34rem),
+        radial-gradient(ellipse at 0% 55%, rgba(179,154,255,.08), transparent 30rem),
+        var(--bg);
+      color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+      line-height: 1.75; min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(1100px, calc(100% - 36px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(18px);
+      background: rgba(11,9,17,.82); border-bottom: 1px solid var(--border);
+    }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-weight: 850; letter-spacing: .4px; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center; border-radius: 14px;
+      color: #160e27; background: linear-gradient(135deg, #d2c2ff, #8b5cf6);
+      box-shadow: 0 7px 25px rgba(139,92,246,.25); font-size: 22px;
+    }
+    .brand-name { font-size: 1.15rem; }
+    .nav-links { display: flex; align-items: center; gap: 25px; color: var(--muted); font-size: .95rem; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--purple); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .lang-select, .menu-toggle {
+      border: 1px solid var(--border); color: var(--text); background: var(--panel);
+      border-radius: 12px; padding: 9px 12px; cursor: pointer;
+    }
+    .lang-select { max-width: 130px; }
+    .menu-toggle { display: none; font-size: 1.2rem; }
+    .hero { padding: 88px 0 72px; }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr .8fr; align-items: center; gap: 50px; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; color: var(--purple);
+      border: 1px solid var(--border); background: rgba(179,154,255,.07);
+      border-radius: 999px; padding: 6px 13px; font-size: .9rem;
+    }
+    .eyebrow-dot { width: 7px; height: 7px; background: #a78bfa; border-radius: 50%; box-shadow: 0 0 14px #a78bfa; }
+    h1 { margin: 20px 0 12px; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 1.12; letter-spacing: -1.8px; }
+    .gradient-text { background: linear-gradient(100deg, #eee7ff 10%, #b39aff 50%, #8b5cf6); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero p { max-width: 620px; color: var(--muted); font-size: 1.12rem; margin: 0; }
+    .hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 47px;
+      padding: 11px 19px; border-radius: 14px; font-weight: 750; border: 1px solid transparent; transition: transform .2s, background .2s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #170d28; background: linear-gradient(135deg, #d2c2ff, #a78bfa); box-shadow: 0 10px 30px rgba(139,92,246,.22); }
+    .btn-secondary { border-color: var(--border); background: var(--panel); color: var(--text); }
+    .hero-card {
+      position: relative; padding: 28px; border: 1px solid var(--border); border-radius: 30px;
+      background: linear-gradient(145deg, rgba(179,154,255,.12), rgba(20,17,29,.94) 55%);
+      box-shadow: var(--shadow); overflow: hidden; text-align: center;
+    }
+    .hero-card::before { content: ""; position: absolute; width: 190px; height: 190px; border-radius: 50%; background: rgba(139,92,246,.17); filter: blur(35px); top: -90px; inset-inline-end: -55px; }
+    .avatar {
+      position: relative; margin: 0 auto 18px; width: 112px; height: 112px; display: grid; place-items: center;
+      border-radius: 32px; color: #211333; font-size: 3rem; font-weight: 900;
+      background: linear-gradient(135deg, #e4d9ff, #9d82f7); border: 5px solid rgba(255,255,255,.09);
+      transform: rotate(-4deg);
+    }
+    .hero-card h2 { margin: 0; font-size: 1.35rem; }
+    .hero-card .role { margin: 5px 0 20px; color: var(--muted); }
+    .mini-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .mini-stat { padding: 12px 8px; border: 1px solid var(--border); border-radius: 15px; background: rgba(11,9,17,.4); }
+    .mini-stat strong { display: block; color: var(--purple); font-size: 1.1rem; }
+    .mini-stat span { color: var(--muted); font-size: .82rem; }
+    section { padding: 55px 0; }
+    .section-heading { margin-bottom: 25px; }
+    .section-kicker { color: var(--purple); font-size: .9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+    h2.section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 4px 0 8px; line-height: 1.3; }
+    .section-description { color: var(--muted); margin: 0; max-width: 690px; }
+    .about-box, .project-card, .contact-card {
+      border: 1px solid var(--border); background: linear-gradient(145deg, rgba(27,22,39,.92), rgba(20,17,29,.86));
+      border-radius: var(--radius); box-shadow: var(--shadow);
+    }
+    .about-box { padding: 27px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .about-box p { color: var(--muted); margin: 0; }
+    .skill-list { display: flex; flex-wrap: wrap; align-content: start; gap: 10px; }
+    .skill { border: 1px solid var(--border); background: rgba(179,154,255,.08); color: #ded2ff; border-radius: 999px; padding: 7px 12px; font-size: .9rem; }
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .project-card { padding: 22px; display: flex; flex-direction: column; min-height: 240px; transition: transform .2s, border-color .2s; }
+    .project-card:hover { transform: translateY(-4px); border-color: rgba(179,154,255,.45); }
+    .project-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 15px; background: rgba(179,154,255,.12); color: var(--purple); font-size: 1.45rem; }
+    .project-card h3 { margin: 15px 0 6px; font-size: 1.15rem; }
+    .project-card p { color: var(--muted); margin: 0 0 18px; font-size: .95rem; }
+    .project-link { margin-top: auto; color: var(--purple); font-weight: 750; }
+    .contact-card { padding: 30px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .contact-card p { margin: 7px 0 0; color: var(--muted); }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .contact-link { border: 1px solid var(--border); background: var(--panel); border-radius: 13px; padding: 10px 14px; color: var(--text); }
+    .contact-link:hover { border-color: var(--purple); }
+    footer { margin-top: 45px; border-top: 1px solid var(--border); padding: 25px 0; color: var(--muted); font-size: .9rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .footer-inner strong { color: var(--text); }
+    :focus-visible { outline: 2px solid var(--purple); outline-offset: 3px; }
+    @media (max-width: 800px) {
+      .hero { padding-top: 55px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-card { max-width: 420px; width: 100%; margin-inline: auto; }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-box { grid-template-columns: 1fr; }
+      .contact-card { align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 15px; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1100px); }
+      .nav { min-height: 68px; flex-wrap: wrap; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+      .nav-links { display: none; order: 3; width: 100%; padding: 5px 0 15px; flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 5px; border-top: 1px solid var(--border); }
+      .brand-mark { width: 38px; height: 38px; }
+      .brand-name { font-size: 1rem; }
+      .lang-select { padding: 8px 7px; max-width: 108px; }
+      h1 { letter-spacing: -1px; }
+      .hero p { font-size: 1rem; }
+      section { padding: 40px 0; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card { min-height: 205px; }
+      .about-box, .contact-card { padding: 21px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    التعديل السريع:
+    1) ابحث عن ZEX.MINO لتغيير الاسم.
+    2) غيّر النصوص داخل data-ar و data-fr و data-en.
+    3) بدّل روابط example.com و github.com/ZEXMINO بروابطك الحقيقية.
+    4) المشاريع الحالية أمثلة؛ غيّر أسماءها ووصفها وروابطها.
+  -->
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="ZEX.MINO home">
+        <span class="brand-mark">Z</span><span class="brand-name">ZEX.MINO</span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about" data-ar="من أنا" data-fr="À propos" data-en="About">من أنا</a>
+        <a href="#projects" data-ar="المشاريع" data-fr="Projets" data-en="Projects">المشاريع</a>
+        <a href="#contact" data-ar="التواصل" data-fr="Contact" data-en="Contact">التواصل</a>
+      </nav>
+      <div class="nav-actions">
+        <label class="sr-only" for="languageSelect" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Language</label>
+        <select id="languageSelect" class="lang-select" aria-label="Choose language">
+          <option value="ar">العربية</option>
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+        </select>
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="eyebrow-dot"></span><span data-ar="الموقع الشخصي الرسمي" data-fr="Site personnel officiel" data-en="Official personal website">الموقع الشخصي الرسمي</span></span>
+          <h1><span data-ar="أهلاً، أنا" data-fr="Salut, je suis" data-en="Hey, I'm">أهلاً، أنا</span><br><span class="gradient-text">ZEX.MINO</span></h1>
+          <p data-ar="مرحباً بك في عالمي الرقمي. هنا أشارك نبذة عني، مشاريعي، والأشياء التي أعمل عليها. الموقع ما زال في البداية، والقادم أفضل!" data-fr="Bienvenue dans mon univers numérique. Je partage ici une présentation, mes projets et ce sur quoi je travaille. Le site débute, et le meilleur reste à venir !" data-en="Welcome to my digital space. Here you'll find a little about me, my projects, and what I'm working on. This site is just getting started—the best is yet to come!">مرحباً بك في عالمي الرقمي. هنا أشارك نبذة عني، مشاريعي، والأشياء التي أعمل عليها. الموقع ما زال في البداية، والقادم أفضل!</p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#projects"><span data-ar="شاهد مشاريعي" data-fr="Voir mes projets" data-en="Explore projects">شاهد مشاريعي</span> <span aria-hidden="true">↙</span></a>
+            <a class="btn btn-secondary" href="#contact" data-ar="تواصل معي" data-fr="Me contacter" data-en="Contact me">تواصل معي</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Profile card">
+          <div class="avatar">Z</div>
+          <h2>ZEX.MINO</h2>
+          <p class="role" data-ar="صانع محتوى رقمي • مهتم بالتقنية" data-fr="Créateur numérique • Passionné de technologie" data-en="Digital creator • Tech enthusiast">صانع محتوى رقمي • مهتم بالتقنية</p>
+          <div class="mini-stats">
+            <div class="mini-stat"><strong>01</strong><span data-ar="الموقع الشخصي" data-fr="Site personnel" data-en="Personal site">الموقع الشخصي</span></div>
+            <div class="mini-stat"><strong>∞</strong><span data-ar="أفكار جديدة" data-fr="Nouvelles idées" data-en="New ideas">أفكار جديدة</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker" data-ar="تعرف عليّ" data-fr="Qui suis-je ?" data-en="Get to know me">تعرف عليّ</span>
+          <h2 class="section-title" data-ar="من أنا؟" data-fr="À propos de moi" data-en="About me">من أنا؟</h2>
+          <p class="section-description" data-ar="مساحة بسيطة للتعريف بنفسي وباهتماماتي." data-fr="Un espace simple pour me présenter et partager mes centres d’intérêt." data-en="A simple space to introduce myself and share what I’m interested in.">مساحة بسيطة للتعريف بنفسي وباهتماماتي.</p>
+        </div>
+        <div class="about-box">
+          <p data-ar="أنا ZEX.MINO، وهذا موقعي الشخصي الذي أجمع فيه مشاريعي وروابطي. أؤمن أن كل مشروع يبدأ بفكرة صغيرة، وأعمل على تطوير مهاراتي خطوة بخطوة. يمكنك تعديل هذا النص وكتابة نبذة حقيقية عن نفسك هنا." data-fr="Je suis ZEX.MINO, et voici mon site personnel où je rassemble mes projets et mes liens. Chaque projet commence par une petite idée. Vous pouvez modifier ce texte pour raconter votre propre histoire." data-en="I'm ZEX.MINO, and this is my personal website for sharing projects and links. Every project starts with a small idea. Edit this text to tell your own story and describe your interests.">أنا ZEX.MINO، وهذا موقعي الشخصي الذي أجمع فيه مشاريعي وروابطي. أؤمن أن كل مشروع يبدأ بفكرة صغيرة، وأعمل على تطوير مهاراتي خطوة بخطوة. يمكنك تعديل هذا النص وكتابة نبذة حقيقية عن نفسك هنا.</p>
+          <div class="skill-list" aria-label="Interests">
+            <span class="skill" data-ar="التقنية" data-fr="Technologie" data-en="Technology">التقنية</span>
+            <span class="skill" data-ar="تصميم المواقع" data-fr="Web design" data-en="Web design">تصميم المواقع</span>
+            <span class="skill" data-ar="التعلم المستمر" data-fr="Apprentissage" data-en="Continuous learning">التعلم المستمر</span>
+            <span class="skill" data-ar="الإبداع" data-fr="Créativité" data-en="Creativity">الإبداع</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker" data-ar="ما الذي أعمل عليه؟" data-fr="Ce que je fais" data-en="What I'm working on">ما الذي أعمل عليه؟</span>
+          <h2 class="section-title" data-ar="مشاريعي" data-fr="Mes projets" data-en="My projects">مشاريعي</h2>
+          <p class="section-description" data-ar="هذه بطاقات تجريبية؛ غيّرها بمشاريعك وروابطها الحقيقية." data-fr="Ces cartes sont des exemples : remplacez-les par vos vrais projets et leurs liens." data-en="These are sample cards. Replace them with your real projects and links.">هذه بطاقات تجريبية؛ غيّرها بمشاريعك وروابطها الحقيقية.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-icon" aria-hidden="true">⌘</div>
+            <h3 data-ar="موقعي الشخصي" data-fr="Mon site personnel" data-en="My personal website">موقعي الشخصي</h3>
+            <p data-ar="موقع تعريفي بسيط بتصميم داكن ولمسات بنفسجية." data-fr="Un site de présentation au thème sombre avec des touches violettes." data-en="A personal landing page with a dark theme and purple accents.">موقع تعريفي بسيط بتصميم داكن ولمسات بنفسجية.</p>
+            <a class="project-link" href="#home"><span data-ar="عرض الموقع" data-fr="Voir le site" data-en="View site">عرض الموقع</span> ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-icon" aria-hidden="true">✦</div>
+            <h3 data-ar="مشروع جديد" data-fr="Nouveau projet" data-en="New project">مشروع جديد</h3>
+            <p data-ar="اكتب هنا وصفاً قصيراً لمشروعك الثاني وما الذي يميّزه." data-fr="Ajoutez une courte description de votre deuxième projet et de ses points forts." data-en="Add a short description of your second project and what makes it special.">اكتب هنا وصفاً قصيراً لمشروعك الثاني وما الذي يميّزه.</p>
+            <a class="project-link" href="https://github.com/ZEXMINO" target="_blank" rel="noopener noreferrer"><span data-ar="اكتشف المزيد" data-fr="En savoir plus" data-en="Learn more">اكتشف المزيد</span> ↗</a>
+          </article>
+          <article class="project-card">
+            <div class="project-icon" aria-hidden="true">◎</div>
+            <h3 data-ar="أعمالي القادمة" data-fr="À venir" data-en="Coming soon">أعمالي القادمة</h3>
+            <p data-ar="مكان مخصص للأفكار والتجارب التي ستشاركها مستقبلاً." data-fr="Un espace pour les idées et expériences que je partagerai bientôt." data-en="A place for ideas and experiments I'll share in the future.">مكان مخصص للأفكار والتجارب التي ستشاركها مستقبلاً.</p>
+            <a class="project-link" href="https://github.com/ZEXMINO" target="_blank" rel="noopener noreferrer"><span data-ar="تابع التحديثات" data-fr="Suivre les nouveautés" data-en="Follow updates">تابع التحديثات</span> ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker" data-ar="خلينا نتواصل" data-fr="Restons en contact" data-en="Say hello">خلينا نتواصل</span>
+          <h2 class="section-title" data-ar="التواصل معي" data-fr="Me contacter" data-en="Contact me">التواصل معي</h2>
+        </div>
+        <div class="contact-card">
+          <div>
+            <h3 data-ar="عندك فكرة أو مشروع؟" data-fr="Une idée ou un projet ?" data-en="Have an idea or project?">عندك فكرة أو مشروع؟</h3>
+            <p data-ar="راسلني أو تابع أعمالي عبر الروابط التالية." data-fr="Écrivez-moi ou suivez mon travail via les liens ci-dessous." data-en="Send me a message or follow my work through the links below.">راسلني أو تابع أعمالي عبر الروابط التالية.</p>
+          </div>
+          <div class="contact-links">
+            <!-- بدّل الروابط التالية بروابطك الحقيقية -->
+            <a class="contact-link" href="https://github.com/ZEXMINO" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="contact-link" href="mailto:your-email@example.com">Email ↗</a>
+            <a class="contact-link" href="https://instagram.com/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> <strong>ZEX.MINO</strong> — <span data-ar="جميع الحقوق محفوظة" data-fr="Tous droits réservés" data-en="All rights reserved">جميع الحقوق محفوظة</span></span>
+      <a href="#home" data-ar="العودة إلى الأعلى ↑" data-fr="Retour en haut ↑" data-en="Back to top ↑">العودة إلى الأعلى ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const languageSelect = document.getElementById('languageSelect');
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    function setLanguage(language) {
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+      document.querySelectorAll('[data-' + language + ']').forEach((element) => {
+        element.textContent = element.getAttribute('data-' + language);
+      });
+      const descriptions = {
+        ar: 'الموقع الشخصي لـ ZEX.MINO — نبذة، مشاريع، وروابط التواصل.',
+        fr: 'Site personnel de ZEX.MINO — présentation, projets et contact.',
+        en: 'ZEX.MINO personal website — about, projects, and contact links.'
+      };
+      document.querySelector('meta[name="description"]').setAttribute('content', descriptions[language]);
+      document.title = language === 'ar' ? 'ZEX.MINO — الموقع الشخصي' :
+        language === 'fr' ? 'ZEX.MINO — Site personnel' : 'ZEX.MINO — Personal Website';
+      try { localStorage.setItem('zexmino-language', language); } catch (error) {}
+    }
+
+    languageSelect.addEventListener('change', (event) => setLanguage(event.target.value));
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    try {
+      const savedLanguage = localStorage.getItem('zexmino-language');
+      if (savedLanguage && ['ar', 'fr', 'en'].includes(savedLanguage)) {
+        languageSelect.value = savedLanguage;
+        setLanguage(savedLanguage);
+      }
+    } catch (error) {}
+  </script>
+</body>
+</html>
