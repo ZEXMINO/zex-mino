@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ZEX.MINO</title>
+<meta name="theme-color" content="#000000">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Hanken+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#000;--ink:#ece6da;--mute:#8d877b;--line:#242019;--gold:#c8ad74;--serif:"Bodoni Moda","Didot","Bodoni 72",Georgia,serif;--sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);background:var(--bg)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 1rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 1.4rem}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:56px}
+.logo{font:600 1.05rem var(--serif);letter-spacing:.04em;text-decoration:none}
+.lang{display:flex;gap:.2rem}
+.lang button{background:none;border:1px solid transparent;color:var(--mute);font:400 .85rem var(--sans);padding:.35rem .7rem;border-radius:99px;cursor:pointer}
+.lang button[aria-pressed="true"]{color:var(--ink);border-color:var(--gold)}
+.hero{min-height:calc(100svh - 56px - env(safe-area-inset-top,0px));display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:3rem}
+h1{margin:0;font:400 clamp(4.4rem,25vw,13rem)/.95 var(--serif);letter-spacing:-.02em}
+.l{display:block;overflow:hidden;padding-bottom:.04em}
+.l span{display:block;transform:translateY(105%);animation:up 1.1s cubic-bezier(.2,.7,.1,1) forwards}
+.l:nth-child(2) span{animation-delay:.14s;font-style:italic}
+.rule{height:1px;background:var(--gold);margin:2rem 0 1.4rem;transform:scaleX(0);transform-origin:left;animation:draw 1.4s .6s cubic-bezier(.2,.7,.1,1) forwards}
+.tag{max-width:30ch;margin:0 0 1.6rem;color:var(--mute);font-size:1.05rem}
+.go{align-self:flex-start;color:var(--ink);text-underline-offset:.35em;text-decoration-color:var(--gold)}
+@keyframes up{to{transform:none}}
+@keyframes draw{to{transform:scaleX(1)}}
+section{padding:5rem 0 1rem}
+h2{margin:0 0 2rem;font:400 clamp(2rem,6vw,3rem)/1.1 var(--serif)}
+ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+li{border-bottom:1px solid var(--line)}
+.w{all:unset;box-sizing:border-box;display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;align-items:center;width:100%;padding:1.5rem 0;cursor:pointer}
+.w:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wt{font:400 clamp(1.7rem,5vw,2.6rem)/1.15 var(--serif);transition:color .3s}
+.w:hover .wt,.open .wt{color:var(--gold)}
+.wm{grid-column:1;color:var(--mute);font-size:.9rem}
+.pl{grid-column:2;grid-row:1/3;position:relative;width:20px;height:20px}
+.pl::before,.pl::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--ink)}
+.pl::after{transition:transform .35s;transform:rotate(90deg)}
+.open .pl::after{transform:none}
+.pn{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+.pn>div{overflow:hidden}
+.open .pn{grid-template-rows:1fr}
+.shot{aspect-ratio:16/10;margin:0 0 1.2rem;border:1px solid var(--line);background:radial-gradient(120% 90% at 80% 10%,#2a2417,#000 70%)}
+.pn p{margin:0 0 1.2rem;max-width:52ch;color:var(--mute)}
+.pn a{display:inline-block;margin-bottom:1.6rem;text-underline-offset:.35em;text-decoration-color:var(--gold)}
+.about p{max-width:46ch;margin:0;font:400 clamp(1.3rem,4vw,1.8rem)/1.5 var(--serif)}
+.contact p{margin:0 0 1rem;color:var(--mute)}
+.mail{display:inline-block;font:400 clamp(1.5rem,6.2vw,3.2rem)/1.2 var(--serif);text-decoration-color:var(--gold);text-underline-offset:.2em;word-break:break-all}
+.soc{display:flex;gap:1.4rem;margin-top:1.6rem}
+.soc a{color:var(--mute);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:.15rem}
+.soc a:hover{color:var(--ink);border-color:var(--gold)}
+footer{margin-top:5rem;padding:1.6rem 0 2rem;border-top:1px solid var(--line);color:var(--mute);font-size:.85rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.l span{transform:none}.rule{transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="#top">ZEX.MINO</a><div class="lang" role="group" aria-label="Langue / Language"><button data-l="fr">FR</button><button data-l="en">EN</button></div></div></header>
+<main id="top">
+<div class="wrap hero">
+<h1 aria-label="ZEX.MINO"><span class="l"><span>ZEX.</span></span><span class="l"><span>MINO</span></span></h1>
+<div class="rule"></div>
+<p class="tag" data-t="tag"></p>
+<a class="go" href="#work" data-t="cta"></a>
+</div>
+<div class="wrap">
+<section id="work"><h2 data-t="work"></h2><ul id="list"></ul></section>
+<section id="about" class="about"><h2 data-t="about"></h2><p data-t="aboutText"></p></section>
+<section id="contact" class="contact"><h2 data-t="contact"></h2><p data-t="lead"></p><a class="mail" id="mail" href="#"></a><div class="soc" id="soc"></div></section>
+</div>
+</main>
+<footer><div class="wrap">© 2026 ZEX.MINO</div></footer>
+<script>
+/* ===== À MODIFIER / EDIT HERE ===== */
+const EMAIL="hello@zexmino.com";
+const LINKS=[["Instagram","https://instagram.com/"],["WhatsApp","https://wa.me/"],["LinkedIn","https://linkedin.com/"]];
+const WORKS=[
+{t:"Maison Noire",y:"2026",fr:["Identité visuelle","Logo, charte graphique et packaging pour une marque de parfums."],en:["Brand identity","Logo, guidelines and packaging for a fragrance brand."]},
+{t:"Atelier 24",y:"2026",fr:["Site web","Vitrine en ligne pour un studio d’architecture."],en:["Website","Online showcase for an architecture studio."]},
+{t:"Éclipse",y:"2025",fr:["Contenu","Direction créative et montage de vidéos courtes pour les réseaux sociaux."],en:["Content","Creative direction and editing of short-form videos for social media."]},
+{t:"Opale",y:"2025",fr:["Boutique en ligne","Site e-commerce minimaliste pour une marque de vêtements."],en:["Online store","Minimal e-commerce site for a clothing brand."]}
+];
+const T={
+fr:{tag:"Portfolio personnel. Une sélection de travaux, pensés dans le détail.",cta:"Voir les travaux",work:"Travaux",about:"À propos",aboutText:"Je suis ZEX.MINO. Je crée des identités, des sites et des contenus pour des marques qui veulent se faire remarquer sans faire de bruit.",contact:"Contact",lead:"Un projet en tête ? Écrivons-le ensemble.",view:"Voir le projet"},
+en:{tag:"Personal portfolio. A selection of work, considered down to the detail.",cta:"See the work",work:"Work",about:"About",aboutText:"I’m ZEX.MINO. I create identities, websites and content for brands that want to be noticed without making noise.",contact:"Contact",lead:"Have a project in mind? Let’s shape it together.",view:"View project"}
+};
+/* ================================== */
+const list=document.getElementById("list");
+WORKS.forEach((w,i)=>{const li=document.createElement("li");
+li.innerHTML='<button class="w" aria-expanded="false" aria-controls="p'+i+'"><span class="wt">'+w.t+'</span><span class="wm"></span><span class="pl" aria-hidden="true"></span></button><div class="pn" id="p'+i+'"><div><div class="shot"></div><p></p><a href="#" class="v"></a></div></div>';
+li.querySelector("button").addEventListener("click",e=>{const o=li.classList.toggle("open");e.currentTarget.setAttribute("aria-expanded",o)});
+list.appendChild(li)});
+document.getElementById("soc").innerHTML=LINKS.map(l=>'<a href="'+l[1]+'" target="_blank" rel="noopener">'+l[0]+'</a>').join("");
+const mail=document.getElementById("mail");mail.href="mailto:"+EMAIL;mail.textContent=EMAIL;
+function setLang(l){
+document.documentElement.lang=l;
+document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T[l][e.dataset.t]);
+document.querySelectorAll("#list li").forEach((li,i)=>{const w=WORKS[i];li.querySelector(".wm").textContent=w[l][0]+", "+w.y;li.querySelector(".pn p").textContent=w[l][1];li.querySelector(".v").textContent=T[l].view});
+document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l===l));
+try{localStorage.setItem("zx-lang",l)}catch(e){}
+}
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.l)));
+let start="fr";
+try{start=localStorage.getItem("zx-lang")||((navigator.language||"fr").slice(0,2)==="en"?"en":"fr")}catch(e){}
+setLang(start==="en"?"en":"fr");
+</script>
+</body>
+</html>
